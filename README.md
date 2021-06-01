@@ -1,43 +1,49 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+|------------------- | ------ | ------------------------- |
+| email              | string | null: false, unique: true | 
+| encrypted_password | string | null: false               |
+| nickname           | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_date         | date   | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items
 
-<<<<<<< Updated upstream
-* Database creation
-=======
 | Column              | Type          | Options                        |
 |-------------------- | ------------- | ------------------------------ |
 | user                | references    | null: false, foreign_key: true | 
 | product_name        | string        | null: false                    |
 | product_descrip     | text          | null: false                    |
-| product_status_id   | integer       | null: false                    |
-| shipping_charge_id | integer       | null: false                    |
+| product_status_id    | integer       | null: false                    |
+| shipping_charge_id  | integer       | null: false                    |
 | region_id           | integer       | null: false                    |
 | shipping_period_id  | integer       | null: false                    |
 | category_id         | integer       | null: false                    |
 | price               | integer       | null: false                    |
->>>>>>> Stashed changes
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchases
 
-* Deployment instructions
+| Column      | Type       | Options                        |
+|------------ | ---------- | ------------------------------ |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
-<<<<<<< Updated upstream
-* ...
-=======
 ### Association
 
 - belongs_to :user
@@ -60,4 +66,3 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :purchase
->>>>>>> Stashed changes
