@@ -20,17 +20,17 @@
 
 ## items
 
-| Column           | Type          | Options                        |
-|----------------- | ------------- | ------------------------------ |
-| user             | references    | null: false, foreign_key: true | 
-| product_name     | string        | null: false                    |
-| product_descrip  | text          | null: false                    |
-| product_status   | integer       | null: false                    |
-| shipping_charges | integer       | null: false                    |
-| publisher        | integer       | null: false                    |
-| shipping_period  | integer       | null: false                    |
-| category         | integer       | null: false                    |
-| price            | string        | null: false                    |
+| Column              | Type          | Options                        |
+|-------------------- | ------------- | ------------------------------ |
+| user                | references    | null: false, foreign_key: true | 
+| product_name        | string        | null: false                    |
+| product_descrip     | text          | null: false                    |
+| product_status_id   | integer       | null: false                    |
+| shipping_charges_id | integer       | null: false                    |
+| region_id           | integer       | null: false                    |
+| shipping_period_id  | integer       | null: false                    |
+| category_id         | integer       | null: false                    |
+| price               | integer       | null: false                    |
 
 ### Association
 
@@ -56,7 +56,7 @@
 | Column          | Type          | Options                        |
 |---------------- | ------------- | ------------------------------ |
 | postal_code     | string        | null: false                    |
-| region          | integer       | null: false                    |
+| region_id       | integer       | null: false                    |
 | city            | string        | null: false                    |
 | street          | string        | null: false                    |
 | building_name   | string        |                                |
@@ -65,4 +65,4 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
