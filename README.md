@@ -5,8 +5,7 @@
 | Column             | Type   | Options                   |
 |------------------- | ------ | ------------------------- |
 | email              | string | null: false, unique: true | 
-| password           | string | null: false               |
-| encrypted_password |        |                           |
+| encrypted_password | string | null: false               |
 | nickname           | string | null: false               |
 | last_name          | string | null: false               |
 | first_name         | string | null: false               |
@@ -21,15 +20,17 @@
 
 ## items
 
-| Column          | Type          | Options                        |
-|---------------- | ------------- | ------------------------------ |
-| user            | references    | null: false, foreign_key: true | 
-| product_name    | string        | null: false                    |
-| product_descrip | text          | null: false                    |
-| product_status  | integer       | null: false                    |
-| publisher       | integer       | null: false                    |
-| shipping_period | integer       | null: false                    |
-| price           | string        | null: false                    |
+| Column           | Type          | Options                        |
+|----------------- | ------------- | ------------------------------ |
+| user             | references    | null: false, foreign_key: true | 
+| product_name     | string        | null: false                    |
+| product_descrip  | text          | null: false                    |
+| product_status   | integer       | null: false                    |
+| shipping_charges | integer       | null: false                    |
+| publisher        | integer       | null: false                    |
+| shipping_period  | integer       | null: false                    |
+| category         | integer       | null: false                    |
+| price            | string        | null: false                    |
 
 ### Association
 
@@ -54,7 +55,6 @@
 
 | Column          | Type          | Options                        |
 |---------------- | ------------- | ------------------------------ |
-| purchases       | references    | null: false, foreign_key: true |
 | postal_code     | string        | null: false                    |
 | region          | integer       | null: false                    |
 | city            | string        | null: false                    |
