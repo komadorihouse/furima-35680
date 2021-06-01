@@ -43,7 +43,6 @@
 |------------ | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
 | item        | references | null: false, foreign_key: true |
-| subscribers | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,6 +54,7 @@
 
 | Column          | Type          | Options                        |
 |---------------- | ------------- | ------------------------------ |
+| purchases       | references    | null: false, foreign_key: true |
 | postal_code     | string        | null: false                    |
 | region_id       | integer       | null: false                    |
 | city            | string        | null: false                    |
