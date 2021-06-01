@@ -27,7 +27,7 @@
 | product_name        | string        | null: false                    |
 | product_descrip     | text          | null: false                    |
 | product_statu_id    | integer       | null: false                    |
-| shipping_charges_id | integer       | null: false                    |
+| shipping_charge_id  | integer       | null: false                    |
 | region_id           | integer       | null: false                    |
 | shipping_period_id  | integer       | null: false                    |
 | category_id         | integer       | null: false                    |
