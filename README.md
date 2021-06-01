@@ -26,7 +26,7 @@
 | user                | references    | null: false, foreign_key: true | 
 | product_name        | string        | null: false                    |
 | product_descrip     | text          | null: false                    |
-| product_status_id   | integer       | null: false                    |
+| product_statu_id    | integer       | null: false                    |
 | shipping_charges_id | integer       | null: false                    |
 | region_id           | integer       | null: false                    |
 | shipping_period_id  | integer       | null: false                    |
@@ -55,7 +55,7 @@
 
 | Column          | Type          | Options                        |
 |---------------- | ------------- | ------------------------------ |
-| purchases       | references    | null: false, foreign_key: true |
+| purchase        | references    | null: false, foreign_key: true |
 | postal_code     | string        | null: false                    |
 | region_id       | integer       | null: false                    |
 | city            | string        | null: false                    |
