@@ -68,9 +68,9 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送先の地域が未選択だと出品できない' do
-        @item.region_id = 0
+        @item.region_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Region must be other than 0')
+        expect(@item.errors.full_messages).to include('Region must be other than 1')
       end
 
       it '発送までの日数が未選択だと出品できない' do
@@ -96,6 +96,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
+
+      it '販売価格の入力が半角英数だけでは出品できない' do
+      end
+
+      it '販売価格の入力が半角英数混合では出品できない' do
+      end
+
     end
   end
 end

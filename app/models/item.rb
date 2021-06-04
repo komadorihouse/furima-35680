@@ -6,18 +6,23 @@ class Item < ApplicationRecord
   belongs_to :region
   belongs_to :period
 
-  validates :user, presence: true
-  validates :product_name, presence: true, length: { minimum: 1, maximum: 40 }
-  validates :product_descrip,     presence: true, length: { minimum: 1, maximum: 1000 }
-  validates :category_id,         numericality: { other_than: 0 }
-  validates :product_status_id,   numericality: { other_than: 0 }
-  validates :shipping_charge_id,  numericality: { other_than: 0 }
-  validates :region_id,           numericality: { other_than: 0 }
-  validates :shipping_period_id,  numericality: { other_than: 0 }
-  validates :price, presence: true,
-                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  validates :image, presence: true
+  with_options presence: true do
+    validates :image
+    validates :product_name,         length: { minimum: 1, maximum: 40 }
+    validates :product_descrip,      length: { minimum: 1, maximum: 1000 }
+    validates :price,
+                      numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  end
+  with_options numericality: { other_than: 0 } do
+    validates :category_id
+    validates :product_status_id
+    validates :shipping_charge_id
+    validates :shipping_period_id
+  end
 
+  validates :region_id,           numericality: { other_than: 1 }
+  
+  
   belongs_to :user
   has_one_attached :image
 end
