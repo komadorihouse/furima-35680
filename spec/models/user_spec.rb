@@ -5,49 +5,45 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
   describe 'ユーザー新規登録' do
-
     context 'ユーザー登録ができる時' do
-
-      it'ニックネーム、パスワード、本名、よみがな、生年月日 が存在すれば登録できる' do
+      it 'ニックネーム、パスワード、本名、よみがな、生年月日 が存在すれば登録できる' do
         expect(@user).to be_valid
       end
 
       it 'passwordが６文字以上であれば登録できる' do
-        @user.password = "a12345"
+        @user.password = 'a12345'
         @user.password_confirmation = @user.password
         expect(@user).to be_valid
       end
 
       it 'passwordが半角英数どちらも含んでいれば登録できる' do
-        @user.password = "a1b2c3"
+        @user.password = 'a1b2c3'
         @user.password_confirmation = @user.password
         expect(@user).to be_valid
       end
 
       it 'last_name は全角であれば登録できる' do
-        @user.last_name = "山田"
+        @user.last_name = '山田'
         expect(@user).to be_valid
       end
 
       it 'first_name は全角であれば登録できる' do
-        @user.first_name = "太郎"
+        @user.first_name = '太郎'
         expect(@user).to be_valid
       end
 
       it 'last_name_kana は全角カナであれば登録できる' do
-        @user.first_name_kana = "ヤマダ"
+        @user.first_name_kana = 'ヤマダ'
         expect(@user).to be_valid
       end
 
       it 'first_name_kana は全角カナであれば登録できる' do
-        @user.first_name_kana = "タロウ"
+        @user.first_name_kana = 'タロウ'
         expect(@user).to be_valid
       end
-
     end
 
     context 'ユーザー登録ができない時' do
-
       it 'ニックネームが空白だと登録できない' do
         @user.nickname = ''
         @user.valid?
@@ -97,7 +93,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'パスワードは、全角入力されていると登録できない' do
-        @user.password = "山田太郎56"
+        @user.password = '山田太郎56'
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
@@ -148,7 +144,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
-      
+
       it 'ユーザー本名のフリガナは、名前が空白だと登録できない' do
         @user.first_name_kana = ''
         @user.valid?
