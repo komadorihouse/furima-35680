@@ -45,8 +45,7 @@ RSpec.describe Item, type: :model do
       it '商品の説明が空白だと出品できない' do
         @item.product_descrip = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Product descrip can't be blank",
-                                                      'Product descrip is too short (minimum is 1 character)')
+        expect(@item.errors.full_messages).to include("Product descrip can't be blank")
       end
 
       it 'カテゴリーが未選択だと出品できない' do
@@ -98,9 +97,15 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格の入力が半角英数だけでは出品できない' do
+        @item.price = "abc"
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it '販売価格の入力が半角英数混合では出品できない' do
+        @item.price = "a500"
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
     end
