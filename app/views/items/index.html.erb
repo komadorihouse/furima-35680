@@ -128,7 +128,7 @@
     </div>
     <ul class='item-lists'>
     
-    <% if Item.exists? %>
+    <% if @items.exists? %>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to  do %>
@@ -148,11 +148,7 @@
             </h3>
             <div class='item-price'>
               <span><%= item.price %>円<br>
-              <% if item.shipping_charge_id == 1 %>
-                <%= '着払い(購入者負担)' %>
-              <% else %>
-                <%= '送料込み(出品者負担)' %>
-              <% end %>
+              <%= Shipping.find(item.shipping_charge_id).name %>
               </span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
