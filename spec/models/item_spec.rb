@@ -97,17 +97,16 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格の入力が半角英数だけでは出品できない' do
-        @item.price = "abc"
+        @item.price = 'abc'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it '販売価格の入力が半角英数混合では出品できない' do
-        @item.price = "a500"
+        @item.price = 'a500'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
-
     end
   end
 end
