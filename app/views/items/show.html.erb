@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.product_name %>
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
@@ -37,7 +37,7 @@
 
     <% end %>
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.product_descrip %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -103,7 +103,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class="another-item"><%= Genre.find(@item.category_id).name %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
