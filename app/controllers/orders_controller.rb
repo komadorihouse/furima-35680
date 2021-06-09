@@ -1,28 +1,24 @@
 class OrdersController < ApplicationController
   def index 
     @item = Item.find(params[:item_id])
-    @subscribers = Subscriber.new
+    @order_subscribers = OrderSubscribers.new
   end
 
-  def creat
+  def create
     @item = Item.find(params[:item_id])
-    @subscribers = Subscriber.new(purchase_params)
-    if @subscribers.valid?
-      @subscribers.save
-      return redirect_to root_path
+    @order_subscribers = OrderSubscribers.new(order_params)
+    if @order_subscribers.valid?
+      @order_subscribers.save
+      redirect_to root_path
     else
-      render 'index'
+      render :index
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:user, :item)
-  end
-
-  def purchase_params
-    params.require(:subscriber).permit(:order, :postal_code, :region_id, :city, :street, :building_name, :phone)
+    params.require(:order_subscribers).permit(:postal_code, :region_id, :city, :street, :building_name, :phone).merge(user_id: current_user.id).merge(item_id: @item.id)
   end
   
   def items_params
