@@ -1,14 +1,14 @@
 class OrdersController < ApplicationController
   def index 
     @item = Item.find(params[:item_id])
-    @order = Purchase.new
+    @subscribers = Subscriber.new
   end
 
-  def create
-    binding.pry
-    @order = Order.new(purchase_params)
-    if @purchase.valid?
-      @order.save
+  def creat
+    @item = Item.find(params[:item_id])
+    @subscribers = Subscriber.new(purchase_params)
+    if @subscribers.valid?
+      @subscribers.save
       return redirect_to root_path
     else
       render 'index'
@@ -17,8 +17,12 @@ class OrdersController < ApplicationController
 
   private
 
+  def order_params
+    params.require(:order).permit(:user, :item)
+  end
+
   def purchase_params
-    params.require(:order).permit(:user, :item).merge(current_user.id)
+    params.require(:subscriber).permit(:order, :postal_code, :region_id, :city, :street, :building_name, :phone)
   end
   
   def items_params
