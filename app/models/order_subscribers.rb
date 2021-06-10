@@ -5,11 +5,11 @@ class OrderSubscribers
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postal_code
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "が無効です。ハイフン(-)を含めてください。"}
     validates :region_id
     validates :city
     validates :street
-    validates :phone
+    validates :phone,       format: {with: /\A[0-9]+\z/, message:"電話番号は半角数字のみで記入してください。"}
     validates :token
   end
 
