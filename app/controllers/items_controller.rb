@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :user_judgment, only: [:edit, :update, :destroy]
-  before_action :order_judgment, only: [:edit, :destroy]
+  before_action :order_judgment, only: [:edit, :destroy, :update]
 
   def index
     @items = Item.all.order(created_at: 'DESC')
     @order = Order.all
+    @shipping = Shipping.all
   end
 
   def new

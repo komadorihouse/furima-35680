@@ -80,9 +80,21 @@ RSpec.describe OrderSubscribers, type: :model do
       end
 
       it '配送先の電話番号が１２桁以上だと購入できない' do
-        @order.phone = 123456789012
+        @order.phone = "123456789012"
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone is too long (maximum is 11 characters)")
+      end
+
+      it 'user_idが空白では購入できない' do
+        @order.user_id = ""
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空白では購入できない' do
+        @order.item_id = ""
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

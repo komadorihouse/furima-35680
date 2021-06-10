@@ -34,7 +34,7 @@
 
     <%= render 'shared/error_messages', model: @order_subscribers %>
 
-    <%= form_with url: "/items/#{@item.id}/orders"  ,model:@order_subscribers ,id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with url: item_orders_path(@item.id)  ,model:@order_subscribers ,id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
