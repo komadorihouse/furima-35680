@@ -1,6 +1,6 @@
 class OrderSubscribers
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :region_id, :city, :street, :building_name, :phone
+  attr_accessor :token, :user_id, :item_id, :postal_code, :region_id, :city, :street, :building_name, :phone
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class OrderSubscribers
     validates :city
     validates :street
     validates :phone
+    validates :token
   end
 
   def save
