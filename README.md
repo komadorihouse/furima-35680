@@ -35,9 +35,11 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
-## purchases
+
+## orders
+
 
 | Column      | Type       | Options                        |
 |------------ | ---------- | ------------------------------ |
@@ -54,7 +56,7 @@
 
 | Column          | Type          | Options                        |
 |---------------- | ------------- | ------------------------------ |
-| purchase        | references    | null: false, foreign_key: true |
+| order           | references    | null: false, foreign_key: true |
 | postal_code     | string        | null: false                    |
 | region_id       | integer       | null: false                    |
 | city            | string        | null: false                    |
@@ -65,4 +67,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
