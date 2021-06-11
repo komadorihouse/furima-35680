@@ -1,10 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :genre
-  belongs_to :status
-  belongs_to :shipping
-  belongs_to :region
-  belongs_to :period
+  
 
   with_options presence: true do
     validates :image
@@ -22,8 +18,13 @@ class Item < ApplicationRecord
 
   validates :region_id, numericality: { other_than: 1 }
 
+  belongs_to :genre
+  belongs_to :status
+  belongs_to :shipping
+  belongs_to :region
+  belongs_to :period
   belongs_to :user
   has_one_attached :image
   has_one :order
-  belongs_to :shipping
+  
 end
