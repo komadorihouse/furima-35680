@@ -6,8 +6,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order(created_at: 'DESC')
-    @order = Order.all
-    @shipping = Shipping.all
   end
 
   def new
@@ -24,7 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.all
+    @shipping = Shipping.find(@item.shipping_charge_id)
+    @genre = Genre.find(@item.category_id)
+    @status = Status.find(@item.product_status_id)
+    @region = Region.find(@item.region_id)
+    @period = Period.find(@item.shipping_period_id)
   end
 
   def edit

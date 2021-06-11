@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if  @order.where(item_id: @item.id).present? %>
+      <% if  @item.order.present? %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -19,10 +19,10 @@
         <%= "¥ #{@item.price}" %> 
       </span>
       <span class="item-postage">
-        <%= Shipping.find(@item.shipping_charge_id).name %>
+        <%= @shipping.name %>
       </span>
     </div>
-    <% if user_signed_in? && @order.where(item_id: @item.id).present? == false %>
+    <% if user_signed_in? && @item.order.blank? %>
       <% if current_user.id == @item.user_id %>
         
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
@@ -46,23 +46,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Genre.find(@item.category_id).name %></td>
+          <td class="detail-value"><%= @genre.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= Status.find(@item.product_status_id).name %></td>
+          <td class="detail-value"><%= @status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= Shipping.find(@item.shipping_charge_id).name %></td>
+          <td class="detail-value"><%= @shipping.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Region.find(@item.region_id).name %></td>
+          <td class="detail-value"><%= @region.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= Period.find(@item.shipping_period_id).name %></td>
+          <td class="detail-value"><%= @period.name %></td>
         </tr>
       </tbody>
     </table>

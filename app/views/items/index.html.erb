@@ -135,10 +135,10 @@
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
 
-            <% if  @order.where(item_id: item.id).present? %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
+            <% if  item.order.present? %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
             <% end %>
 
           </div>

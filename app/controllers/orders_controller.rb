@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :user_judgment, only: [:index, :create]
-  before_action :order_judgment, only: :index
+  before_action :order_judgment, only: [:index, :create]
 
   def index 
     @order_subscribers = OrderSubscribers.new
@@ -43,7 +43,6 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    item_price = Item.find(@item.id)
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,
