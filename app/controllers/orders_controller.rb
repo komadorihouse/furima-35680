@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   private
 
   def order_judgment
-    if Order.where(item_id: @item.id).present?
+    if @item.order.present?
       redirect_to root_path
     end
   end
@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
     item_price = Item.find(@item.id)
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
-        amount: item_price[:price],
+        amount: @item.price,
         card: order_params[:token],
         currency: 'jpy'
       )
