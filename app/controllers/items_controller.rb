@@ -22,11 +22,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @shipping = Shipping.find(@item.shipping_charge_id)
-    @genre = Genre.find(@item.category_id)
-    @status = Status.find(@item.product_status_id)
-    @region = Region.find(@item.region_id)
-    @period = Period.find(@item.shipping_period_id)
   end
 
   def edit

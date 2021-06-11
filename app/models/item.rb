@@ -18,11 +18,11 @@ class Item < ApplicationRecord
 
   validates :region_id, numericality: { other_than: 1 }
 
-  belongs_to :genre
-  belongs_to :status
-  belongs_to :shipping
+  belongs_to :category
+  belongs_to :product_status
+  belongs_to :shipping_charge
   belongs_to :region
-  belongs_to :period
+  belongs_to :shipping_period
   belongs_to :user
   has_one_attached :image
   has_one :order

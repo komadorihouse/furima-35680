@@ -19,7 +19,7 @@
         <%= "¥ #{@item.price}" %> 
       </span>
       <span class="item-postage">
-        <%= @shipping.name %>
+        <%= @item.shipping_charge.name %>
       </span>
     </div>
     <% if user_signed_in? && @item.order.blank? %>
@@ -46,23 +46,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @genre.name %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @status.name %></td>
+          <td class="detail-value"><%= @item.product_status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @shipping.name %></td>
+          <td class="detail-value"><%= @item.shipping_charge.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @region.name %></td>
+          <td class="detail-value"><%= @item.region.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @period.name %></td>
+          <td class="detail-value"><%= @item.shipping_period.name %></td>
         </tr>
       </tbody>
     </table>
