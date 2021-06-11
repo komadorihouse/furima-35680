@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def order_judgment
-    if Order.where(item_id: @item.id).present?
+    if @item.order.present?
       redirect_to action: :index
     end
   end
