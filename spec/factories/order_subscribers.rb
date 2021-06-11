@@ -11,8 +11,6 @@ FactoryBot.define do
     building_name {"建物名"}
     phone         {Faker::Lorem.characters(number: 11, min_numeric: 11)}
     token         {"tok_abcdefghijk00000000000000000"}
-    user_id       { rand(1..2000) }
-    item_id       { rand(1..5000) }
 
   end
 end

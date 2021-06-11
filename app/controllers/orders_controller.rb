@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def index 
     @order_subscribers = OrderSubscribers.new
+    @shipping = Shipping.find(@item.shipping_charge_id)
   end
 
   def create
