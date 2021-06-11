@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.describe OrderSubscribers, type: :model do
   describe '商品購入機能のテスト' do
     before do
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
       @order = FactoryBot.build(:order_subscribers)
+      sleep 0.1
+      @order.user_id = @user.id
+      @order.item_id = @item.id
     end
     context '内容に問題がない場合'do
       it '全ての情報が正しく入力されていると購入できる' do
