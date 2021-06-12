@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
 
   def index 
     @order_subscribers = OrderSubscribers.new
-    
   end
 
   def create
